@@ -18,11 +18,9 @@ public class SpaWebFilter implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         // Forward all unknown requests to the frontend's index.html
-        registry.addViewController("/{spring:\\w+}")
+        registry.addViewController("/{path:[^\\.]*}")
                 .setViewName("forward:/");
-        registry.addViewController("/**/{spring:\\w+}")
-                .setViewName("forward:/");
-        registry.addViewController("/{spring:\\w+}/**{spring:?!(\\.js|\\.css)$}")
+        registry.addViewController("/**/{path:[^\\.]*}")
                 .setViewName("forward:/");
     }
 }
