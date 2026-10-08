@@ -32,4 +32,9 @@ public class AuthController {
         user.setRole(userDetails.getAuthorities().iterator().next().getAuthority());
         return ApiResponse.success(user, "User profile fetched");
     }
+
+    @PostMapping("/logout")
+    public ApiResponse<Void> logout() {
+        return ApiResponse.success(null, "Logout successful");
+    }
 }
